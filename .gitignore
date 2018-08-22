@@ -1,0 +1,9 @@
+*.pyc
+*.project
+tmp.db
+.reviewboardrc
+.settings*
+.pydevproject
+*.diff
+.idea/
+*.schema

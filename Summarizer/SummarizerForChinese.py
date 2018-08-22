@@ -1,8 +1,9 @@
+#coding=utf-8
 """
 
 Simple-Chinese-Summarizer
 
-A very simple summarizier built using NLP in Python
+A very simple chinese summarizier built using jieba and pyltp in Python
 
 """
 
@@ -27,9 +28,10 @@ def main():
     content = sanitize_input(content)
 
     sentence_tokens, word_tokens_rank = tokenize_content(content)
-
+    # print('sentence_tokens','\n'.join(sentence_tokens))
+    # print('word_tokens_rank',word_tokens_rank)
     sentence_ranks = score_tokens(word_tokens_rank, sentence_tokens)
-
+    # print('sentence_ranks', sentence_ranks)
     return summarize(sentence_ranks, sentence_tokens, args.length)
 
 
@@ -138,7 +140,7 @@ def score_tokens(words_tokens_rank, sentence_tokens):
         for word in jieba.cut(sentence.lower(), cut_all=False):  # 精确模式
 
             if word in words_tokens_rank:
-                print('word_tokens_rank[{}]'.format(word), words_tokens_rank[word])
+                # print('word_tokens_rank[{}]'.format(word), words_tokens_rank[word])
 
                 ranking[i] += words_tokens_rank[word]
 
